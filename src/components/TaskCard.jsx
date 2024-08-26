@@ -62,7 +62,7 @@ const TaskCard = ({
 				</div>
 			</div>
 			<div className="flex flex-col items-center justify-center gap-2">
-				{editingIndex && editingIndex == index ? (
+				{editingIndex == index ? (
 					<span
 						className="task_save task_icon_wrap"
 						onClick={(e) => {

@@ -66,12 +66,18 @@ const TaskForm = ({ tasks, setTasks }) => {
 		const taskExists = tasks.filter(
 			(item) => item.task == taskData.task && item.status == taskData.status
 		)
-		if (taskExists.length == 0) {
+		const taskEmpty = taskData.task.trim() == ""
+		if (!taskEmpty && taskExists.length == 0) {
 			setTasks((prev) => {
 				return [...prev, taskData]
 			})
 		} else {
-			setError(true)
+			if (taskEmpty) {
+				setError("Enter some text")
+				// setTimeout(() => setError(false), 1000)
+			} else {
+				setError("Task Already exists")
+			}
 			setTimeout(() => setError(false), 1000)
 		}
 		setTaskData({
@@ -97,7 +103,7 @@ const TaskForm = ({ tasks, setTasks }) => {
 						onChange={handleChange}
 					/>
 					<p className={`error ${error ? "show_error" : "hide_error"}`}>
-						Task Already exists
+						{error}
 					</p>
 				</div>
 				<div className="grid min-[500px]:grid-cols-[2.5fr_1fr] md:items-center flex-col gap-3 sm:flex-row">

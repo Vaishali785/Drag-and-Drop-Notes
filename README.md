@@ -33,11 +33,6 @@ This project is a React-based application that offers a custom rich text editor 
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm (v6 or higher) or yarn
-
 ### Installation
 
 1. **Clone the repository:**

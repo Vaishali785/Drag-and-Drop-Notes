@@ -20,11 +20,23 @@ const TaskCard = ({
 	setEditingIndex,
 }) => {
 	const [editedTitle, setEditedTitle] = useState(title)
+	const [error, setError] = useState("")
 	const handleTitleChange = (e) => {
+		// if (e.target.value.trim() !== "") {
 		setEditedTitle(e.target.value) // Update the title state
+		// } else {
+		// 	setError("Task cannot be empty!")
+		// 	setTimeout(() => setError(""), 1000)
+		// }
 	}
 	const handleSaveClick = () => {
-		setEditingIndex(null)
+		if (editedTitle.trim() !== "") {
+			setEditingIndex(null)
+			// setEditedTitle(e.target.value) // Update the title state
+		} else {
+			setError("Task cannot be empty!")
+			setTimeout(() => setError(""), 1000)
+		}
 	}
 
 	return (
@@ -35,17 +47,22 @@ const TaskCard = ({
 		>
 			<div className="task_content">
 				{editingIndex == index ? (
-					<input
-						data-index={editingIndex}
-						type="text"
-						value={editedTitle}
-						onChange={handleTitleChange}
-						className="task_text input"
-						onBlur={handleSaveClick} // Save changes when input loses focus
-					/>
+					<div className="mb-3">
+						<input
+							data-index={editingIndex}
+							type="text"
+							value={editedTitle}
+							onChange={handleTitleChange}
+							className="task_text input"
+							onBlur={handleSaveClick} // Save changes when input loses focus
+						/>
+						{error && (
+							<span className="text-xs block mt-2 text-red-500">{error}</span>
+						)}
+					</div>
 				) : (
 					<p
-						className="task_text"
+						className="task_text mb-3"
 						data-index={editingIndex}
 						style={{ ...styles }}
 					>

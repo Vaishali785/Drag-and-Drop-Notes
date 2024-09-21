@@ -4,6 +4,8 @@
 
 This project is a React-based application that offers a custom rich text editor for note-taking, integrated with a custom drag-and-drop functionality for managing and organizing notes. The application supports basic CRUD operations, tag management, and search functionality. It is designed to be responsive, providing an optimal experience across different devices.
 
+For a live demonstration, explore [Demo](https://drag-and-drop-notes.netlify.app/).
+
 ## Features
 
 ### 1. Rich Text Editor
